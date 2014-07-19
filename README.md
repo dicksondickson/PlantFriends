@@ -9,11 +9,14 @@ The (many) sensor nodes consists of a Moteino (an Arduino clone with an RF trans
 
 The base station houses another Moteino, which acts as a gateway to recieve the RF signals, and a Raspberry Pi where the data is logged into a MySQL database and serves the data to the Plant Friends mobile app. The Plant Friends app is a native Android app that displays the senor node data in a pretty way. :)
 
+I wrote an extensive how-to tutorial instructable where you can build your own Plant Friends system!
+http://dicksonchow.com/plantfriends2
+
+
 Plant Friends is based on my original proof-of-concept project: http://dicksonchow.com/plantfriends
 
-I wrote an extensive how-to tutorial instructable here: http://dicksonchow.com/plantfriends2
 
-
+If you use Plant Friends, I'd love to hear about it!
 
 
 

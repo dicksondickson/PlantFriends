@@ -20,6 +20,15 @@ If you use Plant Friends, I'd love to hear about it!
 
 
 
+NOTES
+==================
+Some stuff is still really rough. Mainly the web interface to add sensor nodes into the database. The app looks nice but missing some functionality like scrolling through the list of nodes (lol) and the ability to edit sensor node information. I have other plans for the app like adding sensor nodes to the system and controlling ( an army?) of Moteinos so i'll be working on that. :)
+
+The main python script that runs on the Pi and the sensor node / gateway Moteino code all works great. 
+
+
+
+
 Large Fine Print
 ==================
 

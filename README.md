@@ -1,4 +1,4 @@
-PlantFriends MK II
+Plant Friends MK II
 ==================
 
 What is Plant Friends?

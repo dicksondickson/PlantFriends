@@ -26,7 +26,7 @@ with con:
 	cur = con.cursor()
 	
 	### Prepare the SQL statement to be executed
-	nodeindexcreate = "CREATE TABLE NodeIndex(NodeID INT PRIMARY KEY, Alias VARCHAR(50), Location VARCHAR(200), Plant VARCHAR(200), Comments VARCHAR(1000))"
+	nodeindexcreate = "CREATE TABLE NodeIndex(NodeID INT PRIMARY KEY , Alias VARCHAR(50), Location VARCHAR(200), Plant VARCHAR(200), Comments VARCHAR(1000))"
 
 	cur = con.cursor()
 	

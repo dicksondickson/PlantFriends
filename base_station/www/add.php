@@ -11,7 +11,7 @@ require('main.php');
 <html>
 <head>
 	<title>PlantFriends - Administration page</title>
-	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cosmo/bootstrap.min.css" rel="stylesheet">
+	<link href="/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
 	body {
 		padding-top: 20px;

@@ -73,15 +73,15 @@ class Home {
     	if(!$this->dbConnection()) {
     		return false;
     	}
-    	$query = $this->dbconn->prepare('SELECT DateTime, SoilMoist, TempC, Humid, Voltage FROM '.$aliasid.' WHERE DATE(DateTime) = DATE(DATE_SUB(NOW() , INTERVAL 0 DAY )) ORDER BY id DESC LIMIT 1');
+    	$query = $this->dbconn->prepare('SELECT DateTime, ErrorLvl, SoilMoist, TempC, Humid, Voltage FROM '.$aliasid.' WHERE DATE(DateTime) = DATE(DATE_SUB(NOW() , INTERVAL 0 DAY )) ORDER BY id DESC LIMIT 1');
     	$query->execute();
     	$obj = $query->fetch();
     	//var_dump($obj);
     	$obj['DateTime'] = date("F-jS, Y", strtotime($obj['DateTime']));
     	if (strpos($obj['DateTime'],'1970')){
-			$obj = [ 'DateTime' => "No Data", 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
+			$obj = [ 'DateTime' => "No Data", 'ErrorLvl' => 0, 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
 		}
-    	return $obj['DateTime'].':'.$obj['SoilMoist'].':'.$obj['TempC'].':'.$obj['Humid'].':'.$obj['Voltage'];
+    	return $obj['DateTime'].':'.$obj['ErrorLvl'].':'.$obj['SoilMoist'].':'.$obj['TempC'].':'.$obj['Humid'].':'.$obj['Voltage'];
     }
 
     /**
@@ -97,16 +97,16 @@ class Home {
     	}
     	$result = '';
     	for ($i=1; $i <= $days; $i++) { 
-    		$query = $this->dbconn->prepare('SELECT DateTime, AVG(SoilMoist) as SoilMoist, AVG(TempC) as TempC, AVG(Humid) as Humid, AVG(Voltage) as Voltage FROM '.$aliasid.' WHERE DATE(DateTime) = DATE(DATE_SUB(NOW() , INTERVAL :days DAY ))');
+    		$query = $this->dbconn->prepare('SELECT DateTime, ErrorLvl, AVG(SoilMoist) as SoilMoist, AVG(TempC) as TempC, AVG(Humid) as Humid, AVG(Voltage) as Voltage FROM '.$aliasid.' WHERE DATE(DateTime) = DATE(DATE_SUB(NOW() , INTERVAL :days DAY ))');
     		$query->bindValue(':days', $i, PDO::PARAM_INT);
     		$query->execute();
     		$obj = $query->fetch();
     		//var_dump($obj);
     		$obj['DateTime'] = date("F-jS, Y", strtotime($obj['DateTime']));
     		if (strpos($obj['DateTime'],'1969')){
-				$obj = [ 'DateTime' => "No Data", 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
+				$obj = [ 'DateTime' => "No Data", 'ErrorLvl' => 0, 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
 			}
-    		$result .= $obj['DateTime'].":".round($obj['SoilMoist']).":".round($obj['TempC'], 2).":".round($obj['Humid']).":".round($obj['Voltage'], 3)."\n";
+    		$result .= $obj['DateTime'].":".$obj['ErrorLvl'].":".round($obj['SoilMoist']).":".round($obj['TempC'], 2).":".round($obj['Humid']).":".round($obj['Voltage'], 3)."\n";
 			//echo $result;
     	}
     	return $result;

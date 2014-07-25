@@ -98,15 +98,16 @@ class Home {
     	$result = '';
     	for ($i=1; $i <= $days; $i++) { 
     		$query = $this->dbconn->prepare('SELECT DateTime, AVG(SoilMoist) as SoilMoist, AVG(TempC) as TempC, AVG(Humid) as Humid, AVG(Voltage) as Voltage FROM '.$aliasid.' WHERE DATE(DateTime) = DATE(DATE_SUB(NOW() , INTERVAL :days DAY ))');
-    		$query->bindValue(':days', $days, PDO::PARAM_INT);
+    		$query->bindValue(':days', $i, PDO::PARAM_INT);
     		$query->execute();
     		$obj = $query->fetch();
     		//var_dump($obj);
     		$obj['DateTime'] = date("F-jS, Y", strtotime($obj['DateTime']));
-    		if (strpos($obj['DateTime'],'1970')){
+    		if (strpos($obj['DateTime'],'1969')){
 				$obj = [ 'DateTime' => "No Data", 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
 			}
-    		$result .= $obj['DateTime'].":".round($obj['SoilMoist']).":".round($obj['TempC'], 2).":".round($obj['Humid']).":".round($obj['Voltage'], 3)."<br>";
+    		$result .= $obj['DateTime'].":".round($obj['SoilMoist']).":".round($obj['TempC'], 2).":".round($obj['Humid']).":".round($obj['Voltage'], 3)."\n";
+			//echo $result;
     	}
     	return $result;
     }

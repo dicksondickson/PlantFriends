@@ -1,20 +1,22 @@
 <?php
-//
-// Plant Friends Admin Interface
-// Insert and delete sensor nodes in the NodeIndex table
-// Extremely alpha, use with care.
-//
-// Put it in your /var/www/admin dir.
-//
-// Dickson Chow
-// http://dicksonchow.com
-//
-// First Release: June 24, 2014.
-// Updated: June 26, 2014.
-//
-// MIT License
-// http://opensource.org/licenses/mit-license.php
-//
+/*
+	Plant Friends Admin Interface
+	Insert and delete sensor nodes in the NodeIndex table
+	Extremely alpha, use with care.
+
+	Put it in your /var/www/ dir
+
+	Dickson Chow
+	http://dicksonchow.com
+
+	First Release: June 24, 2014.
+	Updated: July 25, 2014.
+
+	MIT License
+	http://opensource.org/licenses/mit-license.php
+
+*/
+
 require('main.php');
 
 if (isset($_POST["addnode"])) {

@@ -156,7 +156,7 @@ while ($row = mysql_fetch_assoc($nodearray)) {
 	// This is responsible for displaying the editable textboxes with node information inside.
 	// Wanted everything in one file and not have to do a include.
 	//include 'row.htm';
-	$nodedisplay = '<form method="POST" action="index.php">
+	$nodedisplay = '<form method="POST" action="admin.php">
 	<input type="hidden" name="nodeidtemp" value="'."{$row['NodeID']}".'"></input>
 	Node ID:<input type="text" name="nodeid" value="'."{$row['NodeID']}".'"></input>
 	Alias:<input type="text" name="alias" value="'."{$row['Alias']}".'"></input>
@@ -176,7 +176,7 @@ mysql_close();
 <br>
 <p>
 ADD NEW SENSOR NODE
-<form method="POST" action="index.php">
+<form method="POST" action="admin.php">
 NodeID <input type="text" name="nodeid"></input><br/>
 Alias <input type="text" name="alias"></input><br/>
 Location <input type="text" name="location"></input><br/>

@@ -51,7 +51,7 @@ class Admin {
     		$loc = trim($loc);
     		$plant = trim($plant);
     		$comment = trim($comment);
-    		$aliasID = $alias.$nodeid;
+    		$aliasid = $alias.$nodeid;
     		// Insert onto NodeIndex
 	    	$query = $this->dbconn->prepare('INSERT INTO NodeIndex VALUES(:nodeid, :alias, :loc, :plant, :comment)');
 	    	$query->bindValue(':nodeid', $nodeid, PDO::PARAM_INT);
@@ -61,11 +61,11 @@ class Admin {
 	    	$query->bindValue(':comment', $comment, PDO::PARAM_STR);
 	    	$query->execute();
 	    	// Create table
-	    	$query = $this->dbconn->prepare("CREATE TABLE $aliasID (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, DateTime TIMESTAMP, ErrorLvl INT, SoilMoist INT, TempC INT, Humid INT, Voltage FLOAT)");
+	    	$query = $this->dbconn->prepare("CREATE TABLE $aliasid (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, DateTime TIMESTAMP, ErrorLvl INT, SoilMoist INT, TempC INT, Humid INT, Voltage FLOAT)");
 	    	$query->execute();
 	    	// Populate new table with data
-	    	$query = $this->dbconn->prepare("INSERT INTO :aliasid (DateTime, ErrorLvl, SoilMoist, TempC, Humid, Voltage) VALUES (CURRENT_TIMESTAMP,'0','0','0','0','0')");
-	    	$query->bindValue(':aliasid', $aliasID, PDO::PARAM_INT);
+	    	$query = $this->dbconn->prepare("INSERT INTO $aliasid (DateTime, ErrorLvl, SoilMoist, TempC, Humid, Voltage) VALUES (CURRENT_TIMESTAMP,'0','0','0','0','0')");
+	    	//$query->bindValue(':aliasid', $aliasid, PDO::PARAM_INT);
 	    	$query->execute();
 	    	return true;
     	} else {

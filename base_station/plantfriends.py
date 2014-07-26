@@ -65,7 +65,7 @@ def alertMail(msg):
 			"To: %s" % emaildest,
 			"Subject: Haaaaaay",
 			"",
-			msg + " K' thanks.  \r\n - %s" % Alias,
+			msg + "\r\nK. thanks.\r\n\r\n- %s" % Alias,
 			), "\r\n")
 		server = smtplib.SMTP('smtp.gmail.com:587') # Gmail SMTP server address
 		server.ehlo()
@@ -145,7 +145,10 @@ try:
 				#print NodeCache[idex][1]
 				Alias = NodeCache[idex][1]
 				AliasID = Alias + str(NodeID)
-				AliasID.replace(" ", "") #strip spaces!!
+				#strip spaces!!
+				AliasID = AliasID.strip()
+				AliasID = AliasID.replace(" ", "")
+				#print AliasID
 
 				
 				# Break data out from array

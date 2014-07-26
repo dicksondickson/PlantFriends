@@ -52,6 +52,7 @@ class Admin {
     		$plant = trim($plant);
     		$comment = trim($comment);
     		$aliasid = $alias.$nodeid;
+			$aliasid = preg_replace('/\s+/', '', $aliasid); // stripe whitespaces!
     		// Insert onto NodeIndex
 	    	$query = $this->dbconn->prepare('INSERT INTO NodeIndex VALUES(:nodeid, :alias, :loc, :plant, :comment)');
 	    	$query->bindValue(':nodeid', $nodeid, PDO::PARAM_INT);
@@ -102,7 +103,9 @@ class Admin {
     	$query->execute();
     	// check if Alias was changed.
     	$aliasid = $alias.$nodeid;
+		$aliasid = preg_replace('/\s+/', '', $aliasid); // stripe whitespaces!
     	$oldAliasid = $oldAlias[0].$nodeid;
+		$oldAliasid = preg_replace('/\s+/', '', $oldAliasid); // stripe whitespaces!
         if($oldAliasid != $aliasid) {
     		$query = $this->dbconn->prepare('RENAME TABLE '.$oldAliasid.' TO '.$aliasid);
     		$query->execute();
@@ -125,6 +128,7 @@ class Admin {
     	$query->bindValue(':nodeid', $nodeid, PDO::PARAM_INT);
     	$query->execute();
         $aliasid = $alias.$nodeid;
+		$aliasid = preg_replace('/\s+/', '', $aliasid); // stripe whitespaces!
     	$query = $this->dbconn->prepare('DROP TABLE '.$aliasid);
     	$query->execute();
     	return true;

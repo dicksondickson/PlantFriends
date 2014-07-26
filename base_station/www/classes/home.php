@@ -59,7 +59,8 @@ class Home {
     	$query->bindValue(':nodeid', $nodeid, PDO::PARAM_INT);
     	$query->execute();
     	$obj = $query->fetchObject();
-    	$AliasID = $obj->Alias.$obj->NodeID;
+		$AliasID = $obj->Alias.$obj->NodeID;
+		$AliasID = preg_replace('/\s+/', '', $AliasID); // stripe whitespaces!
     	return $AliasID;
     }
 
@@ -78,7 +79,7 @@ class Home {
     	$obj = $query->fetch();
     	//var_dump($obj);
     	$obj['DateTime'] = date("F-jS, Y", strtotime($obj['DateTime']));
-    	if (strpos($obj['DateTime'],'1970')){
+    	if (strpos($obj['DateTime'],'1969')){
 			$obj = [ 'DateTime' => "No Data", 'ErrorLvl' => 0, 'SoilMoist' => 0, 'TempC' => 0, 'Humid' => 0, 'Voltage' => 0];
 		}
     	return $obj['DateTime'].':'.$obj['ErrorLvl'].':'.$obj['SoilMoist'].':'.$obj['TempC'].':'.$obj['Humid'].':'.$obj['Voltage'];

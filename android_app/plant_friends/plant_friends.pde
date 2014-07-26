@@ -11,7 +11,7 @@
   http://dicksonchow.com
 
   First release: August 8, 2013
-  Updated: July 18, 2014
+  Updated: July 26, 2014
 
 
   The Plant Friends MKII software, source code, Arduino sketchs and Processing sketches is released under The MIT License.
@@ -44,7 +44,7 @@
 
  
 // Server settings. Change IP address or hostname accordingly.
-static final String NodeIndexURL = "http://IPADDRESS_HOSTNAME:PORT";
+static final String NodeIndexURL = "http://RASPIADDRESSS:PORT";
 
 // for accessing node specific data
 static final String NodeURL = NodeIndexURL + "/index.php?NodeID=";

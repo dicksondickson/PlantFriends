@@ -95,21 +95,21 @@ class NodeBox {
     // soil moist. scale is mapped to 0 - 600 ADC value
     fill(greenpas);
     rect(0,0,mGw,90);
-    vOffset = map(tempSoilx,0,600,90,0);
+    vOffset = constrain(map(tempSoilx,0,600,90,0),0,90);
     fill(green);
     rect(0,vOffset,mGw,90);
     
     // humid. scale mapped to 0 - 90%
     fill(blueskypas);
     rect(mGw+mPad,0,mGw*2+mPad,90);
-    vOffset = map(tempHumidx,0,90,90,0);
+    vOffset = constrain(map(tempHumidx,0,90,90,0),0,90);
     fill(bluesky);
     rect(mGw+mPad,vOffset,mGw*2+mPad,90);
     
     // temp. cale mapped to 0 - 46c
     fill(orangeredpas);
     rect(mGw*2+mPad*2,0,mGw*3+mPad*2,90);
-    vOffset = map(tempTempx,0,46,90,0);
+    vOffset = constrain(map(tempTempx,0,46,90,0),0,90);
     fill(orangeredtemp);
     rect(mGw*2+mPad*2,vOffset,mGw*3+mPad*2,90);
     

@@ -29,10 +29,6 @@ The main python script that runs on the Pi and the sensor node / gateway Moteino
 
 
 
-Thanks
-==================
-Thanks Mário Santos (gadelhas) for re-writing my admin interface!
-
 
 
 Large Fine Print

@@ -19,7 +19,7 @@
 #
 #
 # First Release: July 28, 2013.
-# Updated: June 26, 2014.
+# Updated: Nov 17th, 2015.
 #
 #
 # Released under the MIT License
@@ -51,10 +51,6 @@ emailpass = 'smtp_password'
 
 # These are email address that you want to send alerts TO. Email addresses are stored in an array.
 emailList = ['personal_email@address.com','friends_email@address.com','PHONENUMBER@yourMobileCarrier.com']
-
-
-# Delare serial port settings
-ser = serial.Serial('/dev/ttyAMA0', 115200, timeout=0)
 
 
 # This function is for sending out emails. 
@@ -102,7 +98,12 @@ loadNodes()
 
 		
 # Open the serial port.
-ser.open()
+#ser.open()
+
+# Delare serial port settings, also opens the serial port
+ser = serial.Serial('/dev/ttyAMA0', 115200, timeout=0)
+
+
 try:
 	while 1:
 		
